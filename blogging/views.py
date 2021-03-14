@@ -14,3 +14,29 @@ def stub_view(request, *args, **kwargs):
         body += "Kwargs:\n"
         body += "\n".join(["\t%s: %s" % i for i in kwargs.items()])
     return HttpResponse(body, content_type="text/plain")
+
+
+# add these imports
+from django.template import loader
+from blogging.models import Post
+
+# and this view
+def list_view(request):
+    published = Post.objects.exclude(published_date__exact=None)
+    posts = published.order_by('-published_date')
+    context = {'posts': posts}
+    print (Post.objects)
+    return render(request, 'blogging/list.html', context)
+
+
+def detail_view(request, post_id):
+    print(f'post_id: {post_id}')
+
+    published = Post.objects.exclude(published_date__exact=None)
+    print(published)
+    try:
+        post = published.get(pk=post_id)
+    except Post.DoesNotExist:
+        raise Http404
+    context = {'post': post}
+    return render(request, 'blogging/detail.html', context)
