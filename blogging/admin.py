@@ -18,15 +18,12 @@ class PostAdmin (admin.ModelAdmin):
     Custom ModelAdmin  form for Post with inlined categories
     """
     inlines = [CategoryInline,]
-    pass
 
 class CategoryAdmin(admin.ModelAdmin):
     """
     Custom ModelAdmin for Categories form w/ hidden posts field
     """
     fields = ('name', 'description')
-    pass
-
 
 # and a new admin registration
 admin.site.register(Post, PostAdmin)
