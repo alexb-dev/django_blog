@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 Django==2.1.5
 pytz==2021.1
-=======
-django==2.1.5
->>>>>>> 7f6fcbc1ea6decff090e973e066cdec63eb9b618
