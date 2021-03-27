@@ -5,9 +5,9 @@ name: Python application
 
 on:
   push:
-    branches: [ lesson7_lab ]
+    branches: [ '*' ]
   pull_request:
-    branches: [ lesson7_lab ]
+    branches: [ '*' ]
 
 jobs:
   build:
