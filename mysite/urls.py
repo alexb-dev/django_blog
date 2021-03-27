@@ -21,6 +21,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 from rest_framework import routers
 from blogging import views
+from feeds.feeds import LatestEntriesFeed
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -34,5 +35,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='/'), name="logout"),
     path('accounts/', include('allauth.urls')),
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('latest/feed/', LatestEntriesFeed()),
+
 ]
